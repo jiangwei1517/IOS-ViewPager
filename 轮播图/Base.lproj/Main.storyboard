@@ -27,17 +27,30 @@
                                 <color key="pageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.1095621921" blue="0.104909454" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcb-R1-Z41">
+                                <rect key="frame" x="0.0" y="200" width="375" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="f1" translatesAutoresizingMaskIntoConstraints="NO" id="HGz-X6-lTW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mIvZoom" destination="HGz-X6-lTW" id="OXe-Td-q5i"/>
                         <outlet property="mPageControl" destination="p6w-ad-r9Y" id="4p9-sT-nZR"/>
                         <outlet property="mScrollView" destination="qfa-PF-dVF" id="e5B-tf-PI5"/>
+                        <outlet property="mScrollViewZoom" destination="xcb-R1-Z41" id="XbC-KV-xO8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="f1" width="1600" height="1200"/>
+    </resources>
 </document>

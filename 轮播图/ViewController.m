@@ -12,6 +12,11 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *mPageControl;
 @property (nonatomic, strong) NSTimer *timer;
+
+// 放大缩小
+@property (weak, nonatomic) IBOutlet UIScrollView *mScrollViewZoom;
+@property (weak, nonatomic) IBOutlet UIImageView *mIvZoom;
+
 @end
 
 @implementation ViewController
@@ -32,9 +37,20 @@
     [loop addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.mIvZoom;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    NSLog(@"didZoom...");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.mScrollViewZoom.delegate = self;
+    [self.mScrollViewZoom setMaximumZoomScale:3.5];
+    [self.mScrollViewZoom setMinimumZoomScale:0.5];
     for (int i = 0;i < 5;i++) {
         UIImageView *iv = [UIImageView new];
         NSString* name = [NSString stringWithFormat:@"img_%02d",i+1];
@@ -43,6 +59,7 @@
         [self.mScrollView addSubview:iv];
     }
     [self.mScrollView setContentSize:CGSizeMake(300*5, 0)];
+    self.mScrollView.showsHorizontalScrollIndicator = NO;
     self.mScrollView.pagingEnabled = YES;
     self.mPageControl.numberOfPages = 5;
     self.mScrollView.delegate = self;
